@@ -36,7 +36,7 @@ const Register = () => {
 
     const onSubmit = async () => {
         try {
-            await axios.post(`http://localhost:3000/register`, {
+            await axios.post(`${import.meta.env.VITE_API_URL}/register`, {
                 email: email,
                 password: password,
                 username: username
@@ -46,7 +46,7 @@ const Register = () => {
                 }
             }).then((response) => {
                 if (response.status === 201) {
-                    window.location.assign('/posts')
+                    window.location.assign('/posts/')
                 } else { console.log(response.status) }
             })
         }
@@ -66,9 +66,9 @@ const Register = () => {
     }
 
     const queryParams = queryString.stringify({
-        client_id: '692987819505-8d6svu7kruh3ggc4gh2qi0ht7gr3n3pp.apps.googleusercontent.com', // It must correspond to what we declared earlier in the backend
+        client_id: `${import.meta.env.VITE_CLIENT_ID}`, // It must correspond to what we declared earlier in the backend
         scope: "profile email", // This is the user data you have access to, in our case its just the mail.
-        redirect_uri: `${VITE_BASE_URL}/auth/google/`, // This is the uri that will be redirected to if the user signs into his google account successfully
+        redirect_uri: `${import.meta.env.VITE_BASE_URL}/auth/google/`, // This is the uri that will be redirected to if the user signs into his google account successfully
         auth_type: "rerequest", // This tells the consent screen to reappear if the user initially entered wrong credentials into the google modal
         display: "popup", //It pops up the consent screen when the anchor tag is clicked
         response_type: "code", // This tells Google to append code to the response which will be sent to the backend which exchange the code for a token
@@ -76,7 +76,7 @@ const Register = () => {
 
     });
 
-    const url = `https://accounts.google.com/o/oauth2/v2/auth?${queryParams}/`
+    const url = `https://accounts.google.com/o/oauth2/v2/auth?${queryParams}`
 
     return (
         <section className="login-section">

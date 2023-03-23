@@ -45,7 +45,7 @@ export const authApiSlice = apiSlice.injectEndpoints({
 
         googleLogin: builder.mutation({
             query: codeFromGoogle => ({
-                url: `http://localhost:3000/auth/google?code=${codeFromGoogle}&redirect_uri=http://localhost:5173/auth/google`,
+                url: `${import.meta.env.VITE_API_URL}/auth/google?code=${codeFromGoogle}&redirect_uri=${import.meta.env.VITE_BASE_URL}/auth/google`,
                 method: 'GET',
             })
         }),

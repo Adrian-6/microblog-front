@@ -18,7 +18,7 @@ function Login() {
             try {
                 let userData = await googleLogin(codeFromGoogle) // unwrap lets you use try/catch block
                 dispatch(setCredentials(userData))
-                window.location.replace('/posts')
+                window.location.replace('/posts/')
             } catch (err) {
                 console.log(err)
             }
@@ -52,7 +52,7 @@ function Login() {
                 dispatch(setCredentials(userData))
                 setEmail('')
                 setPassword('')
-                window.location.replace('/posts');
+                window.location.replace('/posts/');
             } catch (err) {
                 console.log(err)
                 if (!err?.status) {
@@ -74,14 +74,14 @@ function Login() {
         const queryParams = queryString.stringify({
             client_id: import.meta.env.VITE_CLIENT_ID, // It must correspond to what we declared earlier in the backend
             scope: 'profile email', // This is the user data you have access to, in our case its just the mail.
-            redirect_uri: `${VITE_BASE_URL}/auth/google/`, // This is the uri that will be redirected to if the user signs into his google account successfully
+            redirect_uri: `${import.meta.env.VITE_BASE_URL}/auth/google/`, // This is the uri that will be redirected to if the user signs into his google account successfully
             auth_type: 'rerequest', // This tells the consent screen to reappear if the user initially entered wrong credentials into the google modal
             display: 'popup', //It pops up the consent screen when the anchor tag is clicked
             response_type: 'code', // This tells Google to append code to the response which will be sent to the backend which exchange the code for a token
             access_type: 'offline'
 
         });
-        const url = `https://accounts.google.com/o/oauth2/v2/auth?${queryParams}/`
+        const url = `https://accounts.google.com/o/oauth2/v2/auth?${queryParams}`
 
         const content = (
             <section className='login-section'>

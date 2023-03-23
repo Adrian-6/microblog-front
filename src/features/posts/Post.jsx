@@ -92,7 +92,7 @@ const Post = React.forwardRef(({ postId }, ref) => {
                     <span className="post-header">
                         <div className="post-header-picture">
                             <div className="profile-picture">
-                                <img className="profile-picture" src={postAuthor.profilePictureURL} onClick={() => navigate(`/users/${post.author}`)} alt="user profile picture"/>
+                                <img className="profile-picture" src={postAuthor.profilePictureURL} onClick={() => navigate(`/users/${post.author}/`)} alt="user profile picture"/>
                             </div>
                             <div className='post-header-left'>
                                 {<TimeAgo timestamp={post.createdAt} />}
