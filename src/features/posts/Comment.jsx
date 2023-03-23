@@ -1,7 +1,7 @@
 
 import { useHandleCommentVoteMutation, useDeleteCommentMutation } from './postsApiSlice'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faHeart, faTrashCan } from '@fortawesome/free-regular-svg-icons'
+import { faHeart } from '@fortawesome/free-regular-svg-icons'
 import { faHeart as faHeartSolid } from '@fortawesome/free-solid-svg-icons'
 import TimeAgo from './TimeAgo'
 import { useEffect, useState } from 'react'
@@ -62,7 +62,7 @@ const Comment = ({ postId, comment, email }) => {
                         <span className="comment-author"><a href={`/users/${author}`}>{author}</a></span>
                     </div>
                 </div>
-                <span className="comment-date">{< TimeAgo timestamp={date} />}</span>
+                <span className="comment-date">{<TimeAgo timestamp={date} />}</span>
             </span>
             <div className="comment-text">
                 {body}

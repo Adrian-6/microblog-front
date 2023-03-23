@@ -1,4 +1,4 @@
-import { parseISO, formatDistanceToNow, formatDistanceToNowStrict, format } from 'date-fns'
+import { parseISO, formatDistanceToNow, format } from 'date-fns'
 
 const TimeAgo = ({ timestamp, dateFormat }) => {
 
@@ -6,12 +6,11 @@ const TimeAgo = ({ timestamp, dateFormat }) => {
     const date = parseISO(timestamp)
     const timePeriod = formatDistanceToNow(date)
     const formatted = format(date, 'dd/MM/yyyy hh:mm')
-    const timeAgo = `${timePeriod} ago`
 
-    const time = dateFormat === 'formatted' ? formatted : timeAgo
+    const time = dateFormat === 'formatted' ? formatted : `${timePeriod} ago`
 
     return (
-        <span title={timeAgo} className="post-time-ago">
+        <span title={`${timePeriod} ago`} className="post-time-ago">
             {time}
         </span>
     )
