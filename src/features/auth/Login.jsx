@@ -34,7 +34,7 @@ function Login() {
     } else {
         // the app continues with its normal logic
 
-        const [email, setEmail] = useState('')
+        const [username, setUsername] = useState('')
         const [password, setPassword] = useState('')
         const [errMsg, setErrMsg] = useState('')
 
@@ -43,14 +43,14 @@ function Login() {
 
         useEffect(() => {
             setErrMsg('')
-        }, [email, password])
+        }, [username, password])
 
         const handleSubmit = async (e) => {
             e.preventDefault()
             try {
-                const userData = await login({ email, password }).unwrap() // unwrap lets you use try/catch block
+                const userData = await login({ username, password }).unwrap() // unwrap lets you use try/catch block
                 dispatch(setCredentials(userData))
-                setEmail('')
+                setUsername('')
                 setPassword('')
                 window.location.replace('/posts/');
             } catch (err) {
@@ -67,7 +67,7 @@ function Login() {
             }
         }
 
-        const handleEmailInput = (e) => setEmail(e.target.value)
+        const handleUsernameInput = (e) => setUsername(e.target.value)
         const handlePasswordInput = (e) => setPassword(e.target.value)
         // const handleToggle = () => setPersist(prev => !prev)
 
@@ -89,9 +89,9 @@ function Login() {
                 <form className='login-form' onSubmit={handleSubmit}>
                     <button type='button' className='login-form-button' onClick={() => window.location.href = url}>Continue with Google</button>
                     <span className='login-form-divider'><div className='line-through-div'></div>or<div className='line-through-div'></div></span>
-                    <label htmlFor='email' className='label-hidden'>email</label>
-                    <input type='text' placeholder='Email' id='email' value={email} onChange={handleEmailInput}></input>
-                    <label htmlFor='password' className='label-hidden'>password</label>
+                    <label htmlFor='username' className='label-hidden'>Username</label>
+                    <input type='text' placeholder='Username' id='username' value={username} onChange={handleUsernameInput}></input>
+                    <label htmlFor='password' className='label-hidden'>Password</label>
                     <input type='password' id='password' placeholder='Password' value={password} onChange={handlePasswordInput} autoComplete="current-password" ></input>
                     <button type='submit' name='submit' className='login-form-button'>Login</button>
                 </form>
