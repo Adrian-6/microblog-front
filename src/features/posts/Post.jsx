@@ -5,7 +5,7 @@ import { useParams } from 'react-router-dom'
 import { useGetPostsQuery, useHandleRepostMutation } from './postsApiSlice'
 import { selectCurrentUser } from "../auth/authSlice"
 import { useHandlePostVoteMutation } from './postsApiSlice'
-import TimeAgo from './timeAgo'
+import TimeAgo from './TimeAgo'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faComment } from '@fortawesome/free-regular-svg-icons'
 import { faRetweet } from '@fortawesome/free-solid-svg-icons'
