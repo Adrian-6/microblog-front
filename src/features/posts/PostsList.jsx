@@ -26,7 +26,7 @@ const PostsList = () => {
             setPages(numberOfPages)
         }
 
-    }, [postsIsLoading])
+    }, [postsIsLoading, numberOfPages])
 
     let content
 

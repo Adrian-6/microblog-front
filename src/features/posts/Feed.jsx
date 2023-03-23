@@ -33,9 +33,7 @@ const Feed = () => {
 
     if (postsIsError) return <p>Error: {postsError.message}</p>
 
-    let content;
-
-    content = (
+    let content = (
         postsResults.map((postId, i) => {
             if (postsResults.length === i + 1) {
                 return <Post ref={lastPostRef} key={postId} postId={postId} />
