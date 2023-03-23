@@ -28,7 +28,7 @@ function Login() {
     }
 
     const { pathname } = location;
-    if (pathname === '/auth/google') {
+    if (pathname === '/auth/google/') {
         // this ensures that the social login method is run only when the path is /auth/google
         socialLogin()
     } else {
@@ -72,7 +72,7 @@ function Login() {
         // const handleToggle = () => setPersist(prev => !prev)
 
         const queryParams = queryString.stringify({
-            client_id: import.meta.env.VITE_CLIENT_ID, // It must correspond to what we declared earlier in the backend
+            client_id: `${import.meta.env.VITE_CLIENT_ID}`, // It must correspond to what we declared earlier in the backend
             scope: 'profile email', // This is the user data you have access to, in our case its just the mail.
             redirect_uri: `${import.meta.env.VITE_BASE_URL}/auth/google/`, // This is the uri that will be redirected to if the user signs into his google account successfully
             auth_type: 'rerequest', // This tells the consent screen to reappear if the user initially entered wrong credentials into the google modal
