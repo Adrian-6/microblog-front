@@ -20,7 +20,7 @@ const PostsList = () => {
         numberOfPages,
     } = useAllPosts(page)
 
-    const [pages, setPages] = useState(1)
+    const [pages, setPages] = useState(0)
     useEffect(() => {
         if (!postsIsLoading) {
             setPages(numberOfPages)
@@ -44,7 +44,7 @@ const PostsList = () => {
         )
     }
 
-    if (!postsIsLoading) {
+    if (!postsIsLoading && pages) {
         return (
 
             <div className="feed">
