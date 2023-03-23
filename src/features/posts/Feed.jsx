@@ -5,6 +5,8 @@ import { useState, useRef, useCallback } from "react"
 import useFeed from "../../hooks/useFeed"
 
 const Feed = () => {
+
+    const intObserver = useRef()
     const email = useSelector(selectCurrentUser)
 
     const [page, setPage] = useState(Number(sessionStorage.getItem("feedPage")) || 0)
@@ -16,7 +18,6 @@ const Feed = () => {
         postsHasNextPage,
     } = useFeed(email, page)
 
-    const intObserver = useRef()
 
     const lastPostRef = useCallback(post => {
         if (postsIsLoading) return
@@ -41,7 +42,7 @@ const Feed = () => {
             return <Post key={postId} postId={postId} />
         })
     )
-    
+
     return (
         <div className="feed">
             {content}

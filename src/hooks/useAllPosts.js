@@ -17,7 +17,6 @@ const useAllPosts = (page = 1) => {
         isSuccess,
     } = useGetPostsPageQuery(page)
 
-    const didComponentRun = useRef(false)
     const [postsResults, setPostsResults] = useState(sessionStorage.getObj("postsArray") || [])
     const [postsIsLoading, setPostsIsLoading] = useState(false)
     const [postsIsError, setPostsIsError] = useState(false)

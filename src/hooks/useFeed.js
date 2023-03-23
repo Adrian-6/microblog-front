@@ -14,16 +14,13 @@ const useFeed = (email, page = 0) => {
         sessionStorage.clear();
     }
 
-    const didComponentRun = useRef(false)
     const [postsResults, setPostsResults] = useState(sessionStorage.getObj("feedArray") || [])
     const [postsIsLoading, setPostsIsLoading] = useState(false)
     const [postsIsError, setPostsIsError] = useState(false)
     const [postsError, setPostsError] = useState({})
     const [postsHasNextPage, setPostsHasNextPage] = useState(false)
 
-    const [getFeed, {
-        data: posts,
-    }] = useGetFeedMutation({ email, page })
+    const [getFeed] = useGetFeedMutation({ email, page })
 
     const getPostsPage = async (email, page = 0, options = {}) => {
         const response = await getFeed({ email, page }, options)
