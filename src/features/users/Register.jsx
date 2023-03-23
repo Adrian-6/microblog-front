@@ -96,11 +96,11 @@ const Register = () => {
                 </p>
                 <button type='button' className="login-form-button" onClick={() => window.location.href = url}>Continue with Google</button>
                 <span className="login-form-divider"><div className="line-through-div"></div>or<div className="line-through-div"></div></span>
-                <label htmlFor='email' className='label-hidden'>email</label>
+                <label htmlFor='email' className='label-hidden'>Username</label>
                 <input id="email" type="text" placeholder="email" name="email" value={email} onChange={(e) => setEmail(e.target.value)} />
-                <label htmlFor='password' className='label-hidden'>password</label>
+                <label htmlFor='password' className='label-hidden'>Password</label>
                 <input id="password" type='password' placeholder="password" name="password" value={password} autoComplete="new-password" onChange={(e) => setPassword(e.target.value)} />
-                <label htmlFor='nickname' className='label-hidden'>nickname</label>
+                <label htmlFor='nickname' className='label-hidden'>Nickname</label>
                 <input id="nickname" type="text" placeholder="display name" name="username" value={username} onChange={(e) => setUsername(e.target.value)} />
                 <button type='submit' className="login-form-button" disabled={!canRegister}
                 >Sign up</button>
