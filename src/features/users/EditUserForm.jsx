@@ -67,7 +67,7 @@ const EditUserForm = ({ user, trigger, setTrigger }) => {
     const onDeleteUserClicked = async (e) => {
         e.preventDefault()
         await deleteUser({ id: user.id, email: currentUser })
-        navigate('/login')
+        navigate('/login/')
     }
 
 

@@ -80,7 +80,7 @@ const Post = React.forwardRef(({ postId }, ref) => {
 
         const postRedirect = (e) => {
             if (e.target.className === 'post-body' || e.target.className === 'post-footer' || e.target.className === 'post-header' || e.target.className === 'post-header-left') {
-                navigate(`/posts/${postId}`)
+                navigate(`/posts/${postId}/`)
             }
         }
         const isEdited = post.edited ? <span className="post-edit">Edited</span> : null
@@ -104,26 +104,26 @@ const Post = React.forwardRef(({ postId }, ref) => {
                                         {modal && (
                                             <UserPopUp email={post.author} />
                                         )}
-                                        <a href={`/users/${post.author}`} className="user-display-name">
+                                        <a href={`/users/${post.author}/`} className="user-display-name">
                                             {postAuthor.username}
                                         </a>
                                     </div>
 
                                 </div>
-                                <a href={`/users/${post.author}`} className="user-email">
+                                <a href={`/users/${post.author}/`} className="user-email">
                                     {`@${postAuthor.email}`}
                                 </a>
                             </div>
 
                         </div>
-                        <span className="post-header-title" onClick={(e) => postRedirect(e)}><a href={`/posts/${post.id}`}>
+                        <span className="post-header-title" onClick={(e) => postRedirect(e)}><a href={`/posts/${post.id}/`}>
                             {post.title}</a>
                         </span>
                     </span>
 
                     {ref ? <div ref={ref} className="post-body">{postBody}{isEdited}</div> : <div className="post-body">{postBody}{isEdited}</div>}
                     <span className="post-footer">
-                        <span><a href={`/posts/${postId}#comment`}><FontAwesomeIcon icon={faComment} /> {post.comments.length}</a> </span>
+                        <span><a href={`/posts/${postId}#comment/`}><FontAwesomeIcon icon={faComment} /> {post.comments.length}</a> </span>
                         <span className="post-footer-vote"><button onClick={(e) => handleVote(e)} onMouseDown={e => e.preventDefault()} className={`${postLiked}`}> {postLikeIcon} {post.upvotes}
                         </button></span>
                         <span className={postShared}><button onClick={repost} onMouseDown={e => e.preventDefault()} disabled={shareLocked}><FontAwesomeIcon icon={faRetweet} /> {post.shares}</button></span>

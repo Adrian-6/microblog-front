@@ -50,7 +50,7 @@ const Comment = ({ postId, comment, email }) => {
                 <div className="comment-header-picture">
 
                     <div className="profile-picture">
-                        <img className="profile-picture" src={commentAuthor.profilePictureURL} alt="user profile picture" onClick={() => navigate(`/users/${author}`)} />
+                        <img className="profile-picture" src={commentAuthor.profilePictureURL} alt="user profile picture" onClick={() => navigate(`/users/${author}/`)} />
                     </div>
                     <div
                         onMouseEnter={() => setModal(true)}
@@ -59,7 +59,7 @@ const Comment = ({ postId, comment, email }) => {
                         {modal && (
                             <UserPopUp email={author} />
                         )}
-                        <span className="comment-author"><a href={`/users/${author}`}>{author}</a></span>
+                        <span className="comment-author"><a href={`/users/${author}/`}>{author}</a></span>
                     </div>
                 </div>
                 <span className="comment-date">{<TimeAgo timestamp={date} />}</span>

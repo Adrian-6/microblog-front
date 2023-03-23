@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react"
+import { useState } from "react"
 import { useUpdatePostMutation, useDeletePostMutation } from "./postsApiSlice"
 import { useNavigate } from "react-router-dom"
 import { useDispatch } from "react-redux"

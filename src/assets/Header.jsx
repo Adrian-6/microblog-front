@@ -32,10 +32,10 @@ const Header = () => {
     return (
         <header className={menuActive ? 'mobile-navbar' : 'header'}>
             <div className="header-left">
-                <a href={`/users/${currentUser}`}>Profile</a>
-                <a href="/feed">Feed</a>
-                <a href="/posts">All Posts</a>
-                <a href="/posts/new" >New Post</a>
+                <a href={`/users/${currentUser}/`}>Profile</a>
+                <a href="/feed/">Feed</a>
+                <a href="/posts/">All Posts</a>
+                <a href="/posts/new/" >New Post</a>
             </div>
             <div className="header-center">
                 <SearchBar menuActive={menuActive} search={search} setSearch={setSearch} />

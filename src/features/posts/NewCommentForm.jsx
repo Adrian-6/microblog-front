@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react"
 import { useAddNewCommentMutation } from "./postsApiSlice"
-import { useNavigate } from "react-router-dom"
 import { selectCurrentUser } from "../auth/authSlice"
 import { useSelector } from "react-redux"
 import TextareaAutosize from 'react-textarea-autosize';

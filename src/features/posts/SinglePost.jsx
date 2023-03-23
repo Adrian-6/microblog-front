@@ -14,10 +14,8 @@ import UserPopUp from '../users/UserPopUp'
 import { useEffect, useState } from 'react'
 import { faHeart } from '@fortawesome/free-regular-svg-icons'
 import { faHeart as faHeartSolid } from '@fortawesome/free-solid-svg-icons'
-import { useNavigate } from "react-router-dom";
 import EditPostForm from './EditPostForm'
 import { selectUserByEmail } from '../users/usersApiSlice'
-import { useDispatch } from 'react-redux'
 
 const Post = ({ postId, comments }) => {
     const [handlePostVote] = useHandlePostVoteMutation()
@@ -86,7 +84,7 @@ const Post = ({ postId, comments }) => {
                     <div className="post-header-picture">
 
                         <div className="profile-picture">
-                            <a href={`/users/${post.author}`}><img className="profile-picture" src={postAuthor.profilePictureURL} alt="user profile picture"/></a>
+                            <a href={`/users/${post.author}/`}><img className="profile-picture" src={postAuthor.profilePictureURL} alt="user profile picture"/></a>
                         </div>
                         <div className='post-header-left'>
                             {<TimeAgo timestamp={post.createdAt} dateFormat="formatted" />}
@@ -99,7 +97,7 @@ const Post = ({ postId, comments }) => {
                                     {modal && (
                                         <UserPopUp email={post.author} />
                                     )}
-                                    <a href={`/users/${post.author}`}>
+                                    <a href={`/users/${post.author}/`}>
                                         {postAuthor.username}
                                     </a>
                                 </div>

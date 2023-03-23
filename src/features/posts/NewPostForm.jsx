@@ -1,8 +1,6 @@
 import { useState, useEffect } from "react"
 import { useAddNewPostMutation } from "./postsApiSlice"
 import { useNavigate } from "react-router-dom"
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faSave } from "@fortawesome/free-solid-svg-icons"
 import { selectCurrentUser } from "../auth/authSlice"
 import { useSelector } from "react-redux"
 import TextareaAutosize from 'react-textarea-autosize';
@@ -32,7 +30,7 @@ const NewPostForm2 = () => {
             const newPostId = response.data.postId
             setTitle('')
             setBody('')
-            navigate(`/posts/${newPostId}`)
+            navigate(`/posts/${newPostId}/`)
         }
     }, [response])
 

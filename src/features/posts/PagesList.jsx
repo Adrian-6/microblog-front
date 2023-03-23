@@ -21,14 +21,14 @@ const PagesList = ({ page, pages }) => {
         i++
     }
 
-    const firstPage = (pagesNum.at(0) > 2) ? <><a href={`/posts/page/1`} key="1">1</a>...</> : (pagesNum.at(0) === 2) ? <a href={`/posts/page/1`} key="1">1</a> : null
-    const lastPage = (pagesNum.at(-1) < pages - 1) ? <>...<a href={`/posts/page/${pages}`} key={pages}>{pages}</a></> : (pagesNum.at(-1) === pages - 1) ? <a href={`/posts/page/${pages}`} key={pages}>{pages}</a> : null
+    const firstPage = (pagesNum.at(0) > 2) ? <><a href={`/posts/page/1/`} key="1">1</a>...</> : (pagesNum.at(0) === 2) ? <a href={`/posts/page/1/`} key="1">1</a> : null
+    const lastPage = (pagesNum.at(-1) < pages - 1) ? <>...<a href={`/posts/page/${pages}/`} key={pages}>{pages}</a></> : (pagesNum.at(-1) === pages - 1) ? <a href={`/posts/page/${pages}/`} key={pages}>{pages}</a> : null
 
     let pageLinks = pagesNum.map(num => {
         if (page == num) {
-            return <a href={`/posts/page/${num}`} className='current-page' key={num}>{num}</a>
+            return <a href={`/posts/page/${num}/`} className='current-page' key={num}>{num}</a>
         }
-        return <a href={`/posts/page/${num}`} key={num}>{num}</a>
+        return <a href={`/posts/page/${num}/`} key={num}>{num}</a>
     })
     return (
         <span className="page-list">

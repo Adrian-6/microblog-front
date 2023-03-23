@@ -7,7 +7,7 @@ const Logout = () => {
 
     const handleLogout = () => {
         logout()
-        navigate('/login')
+        navigate('/login/')
     }
     const content = (
         <button type="button" className="logout-button" onClick={handleLogout}>Logout</button>
