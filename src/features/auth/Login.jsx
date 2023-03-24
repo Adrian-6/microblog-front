@@ -90,7 +90,7 @@ function Login() {
                     <button type='button' className='login-form-button' onClick={() => window.location.href = url}>Continue with Google</button>
                     <span className='login-form-divider'><div className='line-through-div'></div>or<div className='line-through-div'></div></span>
                     <label htmlFor='username' className='label-hidden'>Username</label>
-                    <input type='text' placeholder='Username' id='username' value={username} onChange={handleUsernameInput}></input>
+                    <input type='text' placeholder='Username' id='username' value={username} onChange={handleUsernameInput} autoComplete="username" autoCapitalize="none"></input>
                     <label htmlFor='password' className='label-hidden'>Password</label>
                     <input type='password' id='password' placeholder='Password' value={password} onChange={handlePasswordInput} autoComplete="current-password" ></input>
                     <button type='submit' name='submit' className='login-form-button'>Log In</button>

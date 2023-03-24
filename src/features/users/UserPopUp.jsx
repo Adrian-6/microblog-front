@@ -2,23 +2,20 @@ import Follow from './Follow'
 import { useNavigate } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { selectUserByEmail } from './usersApiSlice'
-import { useGetUsersQuery } from './usersApiSlice'
 import { parseISO, formatDistanceToNow } from 'date-fns'
 
 const UserPopUp = ({ email }) => {
 
-    const user = useSelector(state => selectUserByEmail(state, email))
+    let regex = /android|iphone|kindle|ipad/i
+    let isMobileDevice = regex.test(navigator.userAgent);
 
-    const {
-        isSuccess,
-    } = useGetUsersQuery()
+    const user = useSelector(state => selectUserByEmail(state, email))
 
     const navigate = useNavigate()
 
-    if (isSuccess && user) {
         const date = parseISO(user.dateCreated)
         const timePeriod = formatDistanceToNow(date)
-        return (
+        let content = isMobileDevice ? null : (
             <div className='user-profile-small'>
                 <div className="user-info">
 
@@ -45,13 +42,12 @@ const UserPopUp = ({ email }) => {
                         </div>
                         <span>Joined {timePeriod} ago</span>
                     </div>
-
-
                 </div>
             </div>
-
         )
+        return content
     }
-}
+
+
 
 export default UserPopUp

@@ -28,12 +28,7 @@ const Post = React.forwardRef(({ postId }, ref) => {
         postId = id
     }
 
-    let {
-        isLoading,
-        isSuccess,
-        isError,
-        error
-    } = useGetPostsQuery()
+    useGetPostsQuery()
 
     const [handleRepost] = useHandleRepostMutation({ email, postId })
 
@@ -45,21 +40,17 @@ const Post = React.forwardRef(({ postId }, ref) => {
     const postAuthor = useSelector(state => selectUserByEmail(state, post?.author))
 
     useEffect(() => {
-        if (isSuccess) {
-            if (post?.upvotedBy?.find(user => user === email)) setLiked(true)
-            if (post?.sharedBy?.find(user => user === email)) setShared(true)
-            if (post?.author === email) {
-                setShareLocked(true)
-            }
 
-        }
+        if (post?.upvotedBy?.find(user => user === email)) setLiked(true)
+        if (post?.sharedBy?.find(user => user === email)) setShared(true)
+        if (post?.author === email) setShareLocked(true)
     }, [post])
 
     const navigate = useNavigate()
 
     let content;
 
-    if (isSuccess && post && postAuthor) {
+    if (post && postAuthor) {
 
         let postLiked = liked ? 'post-vote-liked' : ''
         let postShared = shareLocked ? 'post-share-locked' : shared ? 'post-shared' : 'post-share'
@@ -138,10 +129,7 @@ const Post = React.forwardRef(({ postId }, ref) => {
             </>
         )
 
-    } else if (isError) {
-        content = <p>{JSON.stringify(error)}</p>;
     }
-
     return content
 
 })

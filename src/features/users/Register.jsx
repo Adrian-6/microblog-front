@@ -85,7 +85,7 @@ const Register = () => {
                     e.preventDefault()
                     await onSubmit()
                 }}>
-                <p className='errmsg'>
+                <span className='errmsg'>
                     {
                         !validEmail ? 'Invalid email'
                             : username && !validUsername ? 'Invalid username'
@@ -93,15 +93,16 @@ const Register = () => {
                                     : null
                     }
                     <p className={errMsg ? "errmsg" : "null"}>{errMsg}</p>
-                </p>
+
+                </span>
                 <button type='button' className="login-form-button" onClick={() => window.location.href = url}>Continue with Google</button>
                 <span className="login-form-divider"><div className="line-through-div"></div>or<div className="line-through-div"></div></span>
                 <label htmlFor='email' className='label-hidden'>Username</label>
-                <input id="email" type="text" placeholder="Username" name="email" value={email} onChange={(e) => setEmail(e.target.value)} />
+                <input id="email" type="text" placeholder="Username" name="email" autoCapitalize="none" autoComplete="username" value={email} onChange={(e) => setEmail(e.target.value)} />
                 <label htmlFor='password' className='label-hidden'>Password</label>
                 <input id="password" type='password' placeholder="Password" name="password" value={password} autoComplete="new-password" onChange={(e) => setPassword(e.target.value)} />
                 <label htmlFor='nickname' className='label-hidden'>Nickname</label>
-                <input id="nickname" type="text" placeholder="Nickname" name="username" value={username} onChange={(e) => setUsername(e.target.value)} />
+                <input id="nickname" type="text" placeholder="Nickname" name="username" autoCapitalize="none" value={username} onChange={(e) => setUsername(e.target.value)} />
                 <button type='submit' className="login-form-button" disabled={!canRegister}
                 >Sign up</button>
             </form>

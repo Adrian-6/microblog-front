@@ -3,13 +3,10 @@ import { useSelector } from 'react-redux'
 import { useFollowUserMutation } from './usersApiSlice'
 import { selectCurrentUser } from '../auth/authSlice'
 import { useEffect, useRef, useState } from 'react'
-import { useGetUsersQuery } from './usersApiSlice'
 import { selectUserByEmail } from './usersApiSlice'
-
 
 const Follow = ({ targetUserEmail }) => {
     const effectRan = useRef(false)
-    useGetUsersQuery()
 
     const currentUser = useSelector(selectCurrentUser)
     const user = useSelector(state => selectUserByEmail(state, targetUserEmail))

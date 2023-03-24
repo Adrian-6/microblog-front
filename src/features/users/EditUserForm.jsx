@@ -51,7 +51,6 @@ const EditUserForm = ({ user, trigger, setTrigger }) => {
 
     useEffect(() => {
         if (isSuccess || isDelSuccess) {
-            setUsername('')
             setPassword('')
             setTrigger(false)
         }

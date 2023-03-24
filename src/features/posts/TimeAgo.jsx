@@ -5,7 +5,7 @@ const TimeAgo = ({ timestamp, dateFormat }) => {
 
     const date = parseISO(timestamp)
     const timePeriod = formatDistanceToNow(date)
-    const formatted = format(date, 'dd/MM/yyyy hh:mm')
+    const formatted = format(date, 'dd/MM/yyyy k:mm')
 
     const time = dateFormat === 'formatted' ? formatted : `${timePeriod} ago`
 

@@ -843,7 +843,7 @@ button:focus-visible {
 
 .cancel-button {
   margin-left: 0;
-  background-color: var(--black);;
+  background-color: var(--black);
   border: 2px solid var(--white);
 }
 

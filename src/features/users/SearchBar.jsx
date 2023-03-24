@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons"
 import { faXmark } from "@fortawesome/free-solid-svg-icons"
 
-const SearchBar = ({menuActive, search, setSearch}) => {
+const SearchBar = ({ search, setSearch }) => {
 
     let {
         data: users,

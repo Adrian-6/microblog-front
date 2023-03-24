@@ -1,5 +1,4 @@
 import { useParams } from 'react-router-dom'
-import { useGetUsersQuery } from './usersApiSlice'
 import Follow from './Follow'
 import { useState } from 'react'
 import Post from '../posts/Post'
@@ -21,22 +20,9 @@ const User = () => {
     const [followListTrigger, setFollowListTrigger] = useState(false)
     const [followList, setFollowList] = useState([])
 
-    const {
-        isLoading,
-        isSuccess,
-        isError,
-        error
-    } = useGetUsersQuery()
-
     let posts
 
-    if (isLoading) posts = <p>Loading...</p>
-
-    if (isError) {
-        posts = <p className="errmsg">{error?.data?.message}</p>
-    }
-
-    if (isSuccess && user) {
+    if (user) {
 
         const date = parseISO(user.dateCreated)
         const formatted = format(date, 'dd/MM/yyyy')
