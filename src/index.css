@@ -680,7 +680,6 @@ button:focus-visible {
   outline: none !important;
 }
 
-
 .users-search-results,
 .user-follows-list-empty {
 
@@ -1001,6 +1000,12 @@ button:focus-visible {
   right: 10px;
   font-size: 45px;
 }
+
+
+.mobile-navbar-icon:focus {
+  outline: none !important;
+}
+
 
 .mobile-navbar .header-left a {
   display: flex;
