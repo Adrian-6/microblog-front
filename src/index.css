@@ -208,6 +208,7 @@ button:focus-visible {
 
 .post-header-picture,
 .comment-header-picture {
+  object-fit: cover;
   padding: 0;
   display: flex;
   align-items: center;
@@ -216,6 +217,7 @@ button:focus-visible {
 
 .comment-header-picture img {
   cursor: pointer;
+  object-fit: cover;
 }
 
 .edit-post-header {
@@ -617,6 +619,7 @@ button:focus-visible {
 }
 
 .profile-picture {
+  object-fit: cover;
   align-items: center;
   display: flex;
   max-width: 48px;
@@ -627,6 +630,7 @@ button:focus-visible {
 }
 
 .profile-picture-xl {
+  object-fit: cover;
   max-width: 200px;
   max-height: 200px;
   width: 200px;
