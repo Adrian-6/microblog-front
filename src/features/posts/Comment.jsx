@@ -65,7 +65,7 @@ const Comment = ({ postId, comment, email }) => {
                         {modal && (
                             <UserPopUp email={author} />
                         )}
-                        <span className="comment-author"><a href={`/users/${author}/`}>{author}</a></span>
+                        <span className="comment-author"><a href={`/users/${author}/`}>{commentAuthor.username}</a></span>
                     </div>
                 </div>
                 <span className="comment-date">{<TimeAgo timestamp={date} />}</span>

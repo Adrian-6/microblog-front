@@ -897,7 +897,6 @@ button:focus-visible {
   justify-content: space-between;
   position: relative;
   padding: 10px 0px 10px 10px;
-
 }
 
 .user-nickname,
@@ -943,7 +942,6 @@ button:focus-visible {
   justify-content: space-around;
   overflow: scroll;
 }
-
 
 .mobile-navbar,
 .mobile-navbar .header-left {
@@ -1001,11 +999,9 @@ button:focus-visible {
   font-size: 45px;
 }
 
-
 .mobile-navbar-icon:focus {
   outline: none !important;
 }
-
 
 .mobile-navbar .header-left a {
   display: flex;
