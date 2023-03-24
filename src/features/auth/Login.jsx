@@ -93,9 +93,9 @@ function Login() {
                     <input type='text' placeholder='Username' id='username' value={username} onChange={handleUsernameInput}></input>
                     <label htmlFor='password' className='label-hidden'>Password</label>
                     <input type='password' id='password' placeholder='Password' value={password} onChange={handlePasswordInput} autoComplete="current-password" ></input>
-                    <button type='submit' name='submit' className='login-form-button'>Login</button>
+                    <button type='submit' name='submit' className='login-form-button'>Log In</button>
                 </form>
-                <span>Don't have an account yet? <a href='/register/'>Sign up</a></span>
+                <span>Don't have an account yet? <a href='/register/'>Sign Up</a></span>
             </section>
         )
 
