@@ -48,9 +48,15 @@ const Comment = ({ postId, comment, email }) => {
         <div className="comment" >
             <span className="comment-header">
                 <div className="comment-header-picture">
-
                     <div className="profile-picture">
-                        <img className="profile-picture" src={commentAuthor.profilePictureURL} alt="user profile picture" onClick={() => navigate(`/users/${author}/`)} />
+                        <img className="profile-picture" src={commentAuthor.profilePictureURL}
+                            onError={({ currentTarget }) => {
+                                currentTarget.onerror = null; // prevents looping
+                                currentTarget.src = "https://cdn-icons-png.flaticon.com/512/166/166347.png?w=826&t=st=1679619593~exp=1679620193~hmac=f34a680fa3d7d06914e0740ef84f42370e0aa2e2b33c467a4a4d0392ec31250a";
+                            }}
+                            onClick={() => navigate(`/users/${author}/`)}
+                            alt="user profile picture"
+                        />
                     </div>
                     <div
                         onMouseEnter={() => setModal(true)}

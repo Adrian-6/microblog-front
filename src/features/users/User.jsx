@@ -51,9 +51,16 @@ const User = () => {
         return (
             <div className='user-profile'>
                 <div className="user-profile-background">
-
-                    {/* <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png" height="300px" width="300px" className="profile-picture" /> */}
-                    <div><img src={user.profilePictureURL} height="400px" width="400px" className="profile-picture profile-picture-xl" alt="user profile picture" />
+                    <div>
+                        <img className="profile-picture profile-picture-xl" src={user.profilePictureURL}
+                            height="400px" width="400px"
+                            onError={({ currentTarget }) => {
+                                currentTarget.onerror = null; // prevents looping
+                                currentTarget.src = "https://cdn-icons-png.flaticon.com/512/166/166347.png?w=826&t=st=1679619593~exp=1679620193~hmac=f34a680fa3d7d06914e0740ef84f42370e0aa2e2b33c467a4a4d0392ec31250a";
+                            }}
+                            onClick={() => navigate(`/users/${author}/`)}
+                            alt="user profile picture"
+                        />
                     </div>
                     <div className="user-profile-info">
                         <div className="user-upper-row">

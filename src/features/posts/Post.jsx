@@ -92,7 +92,13 @@ const Post = React.forwardRef(({ postId }, ref) => {
                     <span className="post-header">
                         <div className="post-header-picture">
                             <div className="profile-picture">
-                                <img className="profile-picture" src={postAuthor.profilePictureURL} onClick={() => navigate(`/users/${post.author}/`)} alt="user profile picture"/>
+                                <img className="profile-picture" src={postAuthor.profilePictureURL}
+                                    onError={({ currentTarget }) => {
+                                        currentTarget.onerror = null; // prevents looping
+                                        currentTarget.src = "https://cdn-icons-png.flaticon.com/512/166/166347.png?w=826&t=st=1679619593~exp=1679620193~hmac=f34a680fa3d7d06914e0740ef84f42370e0aa2e2b33c467a4a4d0392ec31250a";
+                                    }}
+                                    onClick={() => navigate(`/users/${post.author}/`)} alt="user profile picture"
+                                />
                             </div>
                             <div className='post-header-left'>
                                 {<TimeAgo timestamp={post.createdAt} />}
@@ -108,7 +114,6 @@ const Post = React.forwardRef(({ postId }, ref) => {
                                             {postAuthor.username}
                                         </a>
                                     </div>
-
                                 </div>
                                 <a href={`/users/${post.author}/`} className="user-email">
                                     {`@${postAuthor.email}`}

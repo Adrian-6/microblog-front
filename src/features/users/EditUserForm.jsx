@@ -75,9 +75,9 @@ const EditUserForm = ({ user, trigger, setTrigger }) => {
 
     let canSave
     if (password) {
-        canSave = [validUsername, validPassword].every(Boolean) && !isLoading
+        canSave = [validUsername, validPassword, validProfilePic].every(Boolean) && !isLoading
     } else {
-        canSave = [validUsername].every(Boolean) && !isLoading
+        canSave = [validUsername, validProfilePic].every(Boolean) && !isLoading
     }
 
     const errClass = (isError || isDelError) ? "errmsg" : "offscreen"

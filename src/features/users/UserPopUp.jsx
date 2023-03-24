@@ -21,8 +21,16 @@ const UserPopUp = ({ email }) => {
         return (
             <div className='user-profile-small'>
                 <div className="user-info">
-                    {/* <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png" height="300px" width="300px" className="profile-picture" /> */}
-                    <img src={user.profilePictureURL} height="200px" width="200px" className="profile-picture profile-link" onClick={() => navigate(`/users/${user.email}/`)} alt="user profile picture"/>
+
+                    <img className="profile-picture profile-link" src={user.profilePictureURL}
+                        onError={({ currentTarget }) => {
+                            currentTarget.onerror = null; // prevents looping
+                            currentTarget.src = "https://cdn-icons-png.flaticon.com/512/166/166347.png?w=826&t=st=1679619593~exp=1679620193~hmac=f34a680fa3d7d06914e0740ef84f42370e0aa2e2b33c467a4a4d0392ec31250a";
+                        }}
+                        onClick={() => navigate(`/users/${user.email}/`)}
+                        alt="user profile picture"
+                    />
+
                     <div className="name">
                         <span className="username profile-link"><a href={`/users/${user.email}/`}>{user.username}</a></span>
                         <span className="username-at"><a href={`/users/${user.email}/`}>@{user.email}</a></span>

@@ -48,7 +48,7 @@ function Login() {
         const handleSubmit = async (e) => {
             e.preventDefault()
             try {
-                const userData = await login({ username, password }).unwrap() // unwrap lets you use try/catch block
+                const userData = await login({ email: username, password }).unwrap() // unwrap lets you use try/catch block
                 dispatch(setCredentials(userData))
                 setUsername('')
                 setPassword('')
