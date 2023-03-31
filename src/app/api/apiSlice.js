@@ -2,7 +2,7 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 import { setCredentials, logOut } from '../../features/auth/authSlice'
 
 const baseQuery = fetchBaseQuery({
-    baseUrl: 'https://microblog-api-tcpt.onrender.com',
+    baseUrl: import.meta.env.VITE_API_URL,
     credentials: 'include', //makes the API send back HTTP only cookie
     prepareHeaders: (headers, { getState }) => {
         const token = getState().auth.token
