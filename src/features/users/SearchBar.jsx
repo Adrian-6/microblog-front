@@ -4,7 +4,6 @@ import UserPopUp from "./UserPopUp";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons"
 import { faXmark } from "@fortawesome/free-solid-svg-icons"
-import Loading from '../../assets/Loading'
 
 const SearchBar = ({ search, setSearch }) => {
 
@@ -42,7 +41,7 @@ const SearchBar = ({ search, setSearch }) => {
     let content;
     let array = []
     if (isLoading) {
-        content = <Loading />
+        content = <></>
     } else if (isSuccess) {
         const cancelIcon = search ? <FontAwesomeIcon icon={faXmark} onClick={() => setSearch("")} /> : null
         content = (
