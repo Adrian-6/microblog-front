@@ -4,6 +4,7 @@ import useAllPosts from '../../hooks/useAllPosts'
 import { useParams } from "react-router-dom"
 import { useEffect, useState } from "react"
 import PagesList from "./PagesList"
+import Loading from '../../assets/Loading'
 
 const PostsList = () => {
     let { page } = useParams()
@@ -30,7 +31,7 @@ const PostsList = () => {
 
     let content
 
-    if (postsIsLoading) content = <p>Loading...</p>
+    if (postsIsLoading) content = <Loading />
 
     if (postsIsError) {
         content = <p className="errmsg">{postsError?.data?.message}</p>

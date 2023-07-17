@@ -16,6 +16,7 @@ import { faHeart } from '@fortawesome/free-regular-svg-icons'
 import { faHeart as faHeartSolid } from '@fortawesome/free-solid-svg-icons'
 import EditPostForm from './EditPostForm'
 import { selectUserByEmail } from '../users/usersApiSlice'
+import Loading from '../../assets/Loading'
 
 const Post = ({ postId, comments }) => {
     const [handlePostVote] = useHandlePostVoteMutation()
@@ -59,7 +60,7 @@ const Post = ({ postId, comments }) => {
     let content;
 
     if (isLoading) {
-        content = <p>"Loading..."</p>;
+        content = <Loading />;
     } else if (isSuccess && post && postAuthor) {
 
         let postLiked = liked ? 'post-vote-liked' : ''

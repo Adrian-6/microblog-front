@@ -3,6 +3,7 @@ import { useGetUserByEmailMutation } from './usersApiSlice'
 import EditUserForm from './EditUserForm'
 import { useEffect } from 'react'
 import { useState } from 'react'
+import Loading from '../../assets/Loading'
 
 const EditUser = () => {
     const [getUserByEmail, { isLoading }] = useGetUserByEmailMutation()
@@ -15,7 +16,7 @@ const EditUser = () => {
             .then(res => setUser(res))
     }, [])
 
-    const content = user ? <EditUserForm user={user} /> : <p>Loading...</p>
+    const content = user ? <EditUserForm user={user} /> : <Loading />
 
     return content
 }

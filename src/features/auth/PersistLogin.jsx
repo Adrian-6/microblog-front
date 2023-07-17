@@ -5,6 +5,7 @@ import usePersist from '../../hooks/usePersist'
 import { useSelector } from 'react-redux'
 import { selectCurrentToken } from './authSlice'
 import Login from './Login'
+import Loading from '../../assets/Loading'
 
 const PersistLogin = () => {
     const [persist] = usePersist()
@@ -46,7 +47,7 @@ const PersistLogin = () => {
     if (!persist) { // persist: no
         content = <Outlet />
     } else if (isLoading) { //persist: yes, token: no
-        content = <p>Loading...</p>
+        content = <Loading />
     } else if (isError) { //persist: yes, token: no
         console.log(error)
         content = (

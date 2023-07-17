@@ -3,6 +3,7 @@ import Post from "./Post"
 import { useSelector } from "react-redux"
 import { useState, useRef, useCallback } from "react"
 import useFeed from "../../hooks/useFeed"
+import Loading from '../../assets/Loading'
 
 const Feed = () => {
 
@@ -46,7 +47,7 @@ const Feed = () => {
     return (
         <div className="feed">
             {content}
-            {postsIsLoading && <p>Loading...</p>}
+            {postsIsLoading && <Loading />}
         </div>
     )
 }
