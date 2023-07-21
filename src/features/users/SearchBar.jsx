@@ -1,9 +1,8 @@
-import { useGetUsersQuery } from "./usersApiSlice"
-import { useState, useEffect } from "react";
-import UserPopUp from "./UserPopUp";
+import { faMagnifyingGlass, faXmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons"
-import { faXmark } from "@fortawesome/free-solid-svg-icons"
+import { useEffect, useState } from "react";
+import UserPopUp from "./UserPopUp";
+import { useGetUsersQuery } from "./usersApiSlice";
 
 const SearchBar = ({ search, setSearch }) => {
 

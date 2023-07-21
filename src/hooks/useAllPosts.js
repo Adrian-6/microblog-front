@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect } from 'react'
 import { useGetPostsPageQuery } from '../features/posts/postsApiSlice'
 
 const useAllPosts = (page = 1) => {
@@ -7,11 +7,9 @@ const useAllPosts = (page = 1) => {
         var value = this.getItem(key);
         return value && JSON.parse(value);
     }
-
     window.onbeforeunload = function () {
         sessionStorage.clear();
     }
-
     const {
         data,
         isSuccess,
@@ -23,13 +21,10 @@ const useAllPosts = (page = 1) => {
     const [postsError, setPostsError] = useState({})
     const [numberOfPages, setNumberOfPages] = useState(sessionStorage.getObj("numberOfPages") || 1)
 
-
     useEffect(() => {
-
         setPostsIsLoading(true)
         setPostsIsError(false)
         setPostsError({})
-
         const controller = new AbortController()
         const { signal } = controller
         try {
@@ -49,7 +44,6 @@ const useAllPosts = (page = 1) => {
             })
         }
         return () => controller.abort()
-
     }, [isSuccess])
 
     return { postsIsLoading, postsIsError, postsError, postsResults, numberOfPages }

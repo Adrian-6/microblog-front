@@ -1,13 +1,10 @@
-import React from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { useSelector } from 'react-redux'
-import { useFollowUserMutation } from './usersApiSlice'
 import { selectCurrentUser } from '../auth/authSlice'
-import { useEffect, useRef, useState } from 'react'
-import { selectUserByEmail } from './usersApiSlice'
+import { selectUserByEmail, useFollowUserMutation } from './usersApiSlice'
 
 const Follow = ({ targetUserEmail }) => {
     const effectRan = useRef(false)
-
     const currentUser = useSelector(selectCurrentUser)
     const user = useSelector(state => selectUserByEmail(state, targetUserEmail))
     const [following, setFollowing] = useState(false)
@@ -25,7 +22,7 @@ const Follow = ({ targetUserEmail }) => {
         }
     }, [])
 
-    const [followUser, { isSuccess }] = useFollowUserMutation()
+    const [followUser] = useFollowUserMutation()
     const text = following ? "Following" : "Follow"
 
     const handleFollow = async () => {

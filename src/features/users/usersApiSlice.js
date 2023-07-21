@@ -1,11 +1,10 @@
 import {
-    createSelector,
-    createEntityAdapter
+    createEntityAdapter,
+    createSelector
 } from "@reduxjs/toolkit";
-import { apiSlice } from "../../app/api/apiSlice"
+import { apiSlice } from "../../app/api/apiSlice";
 
 const usersAdapter = createEntityAdapter({})
-
 const initialState = usersAdapter.getInitialState()
 
 export const usersApiSlice = apiSlice.injectEndpoints({
@@ -88,7 +87,6 @@ export const usersApiSlice = apiSlice.injectEndpoints({
         ),
     })
 })
-
 
 export const {
     useGetUsersQuery,

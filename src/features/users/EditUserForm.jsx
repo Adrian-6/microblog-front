@@ -36,7 +36,6 @@ const EditUserForm = ({ user, trigger, setTrigger }) => {
     const [validPassword, setValidPassword] = useState(false)
     const [popup, setPopup] = useState(false)
 
-
     useEffect(() => {
         setValidUsername(USER_REGEX.test(username))
     }, [username])
@@ -60,7 +59,6 @@ const EditUserForm = ({ user, trigger, setTrigger }) => {
     const onUsernameChanged = e => setUsername(e.target.value)
     const onPasswordChanged = e => setPassword(e.target.value)
     const onProfilePicUrlChanged = e => setProfilePic(e.target.value)
-
     const currentUser = useSelector(selectCurrentUser)
 
     const onDeleteUserClicked = async (e) => {
@@ -68,7 +66,6 @@ const EditUserForm = ({ user, trigger, setTrigger }) => {
         await deleteUser({ id: user.id, email: currentUser })
         navigate('/login/')
     }
-
 
     const displayPopup = () => dispatch(setPopupVisible({ isPopupVisible: true, popupText: "User edited" }))
 
@@ -98,7 +95,6 @@ const EditUserForm = ({ user, trigger, setTrigger }) => {
                 <form className="edit-post-form edit-user-form" onSubmit={onSaveUserClicked}>
                     <span className="edit-post-header">
                         <h2>Edit User</h2>
-
                         <button
                             onClick={() => setPopup(true)}
                             className="delete-post-button"
@@ -135,7 +131,6 @@ const EditUserForm = ({ user, trigger, setTrigger }) => {
                             onChange={onUsernameChanged}
                             placeholder="Nickname"
                             className="user-form-nickname"
-
                         />
                     </span>
                     <span className="user-profile-picture">
@@ -149,7 +144,6 @@ const EditUserForm = ({ user, trigger, setTrigger }) => {
                             onChange={onProfilePicUrlChanged}
                             placeholder="Link your profile picture"
                             className="user-form-profile-picture"
-
                         />
                     </span>
                     <span className="user-password">
@@ -163,7 +157,6 @@ const EditUserForm = ({ user, trigger, setTrigger }) => {
                             onChange={onPasswordChanged}
                             placeholder="Password"
                             className="user-form-password"
-
                         />
                     </span>
                     <div className="form__action-buttons">
@@ -180,7 +173,6 @@ const EditUserForm = ({ user, trigger, setTrigger }) => {
                         >
                             Save
                         </button>
-
                     </div>
                     <p className={errClass}>{error?.data?.message}
                         {!validUsername ? 'Invalid username!'

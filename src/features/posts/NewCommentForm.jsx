@@ -1,10 +1,9 @@
-import { useState, useEffect } from "react"
-import { useAddNewCommentMutation } from "./postsApiSlice"
-import { selectCurrentUser } from "../auth/authSlice"
-import { useSelector } from "react-redux"
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import TextareaAutosize from 'react-textarea-autosize';
-import { useDispatch } from 'react-redux'
-import { setPopupVisible } from "../../app/popup/popupSlice"
+import { setPopupVisible } from "../../app/popup/popupSlice";
+import { selectCurrentUser } from "../auth/authSlice";
+import { useAddNewCommentMutation } from "./postsApiSlice";
 
 const NewCommentForm = ({ postId }) => {
 
@@ -27,7 +26,6 @@ const NewCommentForm = ({ postId }) => {
     }, [isSuccess])
 
     const onTextChanged = e => setText(e.target.value)
-
     const canSave = text && !isLoading && text.length <= 2000
 
     const onSavePostClicked = async (e) => {
@@ -39,9 +37,7 @@ const NewCommentForm = ({ postId }) => {
                 )
         }
     }
-
     const errClass = isError ? "errmsg" : "offscreen"
-
     const content = (
         <>
             <p className={errClass}>{error?.data?.message}</p>
@@ -67,7 +63,6 @@ const NewCommentForm = ({ postId }) => {
                     >Comment</button>
                 </div>
                 <p>{text.length > 2000 ? 'Comment exceeding length limit (2000 characters)' : null}</p>
-
             </form>
         </>
     )

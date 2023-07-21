@@ -1,15 +1,14 @@
+import { useCallback, useRef, useState } from "react"
+import { useSelector } from "react-redux"
+import Loading from '../../assets/Loading'
+import useFeed from "../../hooks/useFeed"
 import { selectCurrentUser } from "../auth/authSlice"
 import Post from "./Post"
-import { useSelector } from "react-redux"
-import { useState, useRef, useCallback } from "react"
-import useFeed from "../../hooks/useFeed"
-import Loading from '../../assets/Loading'
 
 const Feed = () => {
 
     const intObserver = useRef()
     const email = useSelector(selectCurrentUser)
-
     const [page, setPage] = useState(Number(sessionStorage.getItem("feedPage")) || 0)
     const {
         postsIsLoading,
@@ -18,7 +17,6 @@ const Feed = () => {
         postsResults,
         postsHasNextPage,
     } = useFeed(email, page)
-
 
     const lastPostRef = useCallback(post => {
         if (postsIsLoading) return
@@ -43,7 +41,6 @@ const Feed = () => {
             return <Post key={postId} postId={postId} />
         })
     )
-
     return (
         <div className="feed">
             {content}

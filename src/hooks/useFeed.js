@@ -1,5 +1,5 @@
-import { useState, useEffect, useRef } from 'react'
-import { useGetFeedMutation } from '../features/posts/postsApiSlice'
+import { useEffect, useState } from 'react';
+import { useGetFeedMutation } from '../features/posts/postsApiSlice';
 
 
 const useFeed = (email, page = 0) => {
@@ -7,7 +7,6 @@ const useFeed = (email, page = 0) => {
     Storage.prototype.getObj = function (key) {
         var value = this.getItem(key);
         return value && JSON.parse(value);
-
     }
 
     window.onbeforeunload = function () {
@@ -50,7 +49,6 @@ const useFeed = (email, page = 0) => {
                 setPostsError({ message: err.message })
             })
         return () => controller.abort()
-
 
     }, [page])
 

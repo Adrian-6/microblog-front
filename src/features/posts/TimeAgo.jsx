@@ -1,12 +1,10 @@
-import { parseISO, formatDistanceToNow, format } from 'date-fns'
+import { format, formatDistanceToNow, parseISO } from 'date-fns'
 
 const TimeAgo = ({ timestamp, dateFormat }) => {
-
 
     const date = parseISO(timestamp)
     const timePeriod = formatDistanceToNow(date)
     const formatted = format(date, 'dd/MM/yyyy k:mm')
-
     const time = dateFormat === 'formatted' ? formatted : `${timePeriod} ago`
 
     return (

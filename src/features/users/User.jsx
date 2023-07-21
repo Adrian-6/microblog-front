@@ -1,15 +1,15 @@
-import { useParams } from 'react-router-dom'
-import Follow from './Follow'
-import { useState } from 'react'
-import Post from '../posts/Post'
-import { selectCurrentUser } from '../auth/authSlice'
-import { selectUserByEmail } from './usersApiSlice'
-import { useSelector } from 'react-redux'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faGear } from "@fortawesome/free-solid-svg-icons"
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { format, parseISO } from 'date-fns'
+import { useState } from 'react'
+import { useSelector } from 'react-redux'
+import { useParams } from 'react-router-dom'
+import { selectCurrentUser } from '../auth/authSlice'
+import Post from '../posts/Post'
 import EditUserForm from './EditUserForm'
-import { parseISO, format } from 'date-fns'
+import Follow from './Follow'
 import UsersList from './UsersList'
+import { selectUserByEmail } from './usersApiSlice'
 
 const User = () => {
     const { email } = useParams()
@@ -23,10 +23,8 @@ const User = () => {
     let posts
 
     if (user) {
-
         const date = parseISO(user.dateCreated)
         const formatted = format(date, 'dd/MM/yyyy')
-
         const { userPostsId } = user
         posts = (
             userPostsId?.length
@@ -52,7 +50,6 @@ const User = () => {
                         <div className="user-upper-row">
                             <span className="username"> {user.username}</span>
                             <span>@{user.email}</span>
-
                         </div>
                         {email === currentUser ? (
                             <>
@@ -61,9 +58,6 @@ const User = () => {
                                         <EditUserForm user={user} trigger={trigger} setTrigger={setTrigger} />
                                     )}
                                 </div>
-
-
-
                                 <span className="post-edit post-edit-button edit-user-icon" onClick={() => setTrigger(prev => !prev)}>
                                     <FontAwesomeIcon icon={faGear} />
                                 </span>

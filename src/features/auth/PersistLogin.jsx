@@ -1,19 +1,15 @@
 import { Outlet } from 'react-router-dom'
 import { useEffect, useRef, useState } from 'react'
 import { useRefreshMutation } from './authApiSlice'
-import usePersist from '../../hooks/usePersist'
 import { useSelector } from 'react-redux'
 import { selectCurrentToken } from './authSlice'
 import Login from './Login'
 import Loading from '../../assets/Loading'
 
 const PersistLogin = () => {
-    const [persist] = usePersist()
     const token = useSelector(selectCurrentToken)
     const effectRan = useRef(false)
-
     const [trueSuccess, setTrueSuccess] = useState(false)
-
     const [refresh, {
         isUninitialized,
         isLoading,
@@ -23,9 +19,7 @@ const PersistLogin = () => {
     }] = useRefreshMutation()
 
     useEffect(() => {
-
         if (effectRan.current === true || process.env.NODE_ENV !== 'development') { // use in react 18 Strict Mode
-
             const verifyRefreshToken = async () => {
                 try {
                     const response = await refresh()
@@ -35,20 +29,15 @@ const PersistLogin = () => {
                     console.error(err)
                 }
             }
-
-            if (!token && persist) verifyRefreshToken()
+            if (!token) verifyRefreshToken()
         }
-
         return () => effectRan.current = true
-
     }, [])
 
     let content
-    if (!persist) { // persist: no
-        content = <Outlet />
-    } else if (isLoading) { //persist: yes, token: no
+    if (isLoading) {
         content = <Loading />
-    } else if (isError) { //persist: yes, token: no
+    } else if (isError) {
         console.log(error)
         content = (
             <>
@@ -56,12 +45,11 @@ const PersistLogin = () => {
                 <Login />
             </>
         )
-    } else if (isSuccess && trueSuccess) { //persist: yes, token: yes
+    } else if (isSuccess && trueSuccess) {
         content = <Outlet />
-    } else if (token && isUninitialized) { //persist: yes, token: yes
+    } else if (token && isUninitialized) {
         content = <Outlet />
     }
-
     return content
 }
 export default PersistLogin

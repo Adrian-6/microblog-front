@@ -1,10 +1,9 @@
-import { useState, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
-import { setCredentials } from '../auth/authSlice';
-import { useLoginMutation } from '../auth/authApiSlice';
-import { useGoogleLoginMutation } from '../auth/authApiSlice';
 import queryString from 'query-string';
+import { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { useLocation } from 'react-router-dom';
+import { useGoogleLoginMutation, useLoginMutation } from '../auth/authApiSlice';
+import { setCredentials } from '../auth/authSlice';
 
 function Login() {
     const location = useLocation();

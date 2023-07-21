@@ -1,5 +1,5 @@
-import { useSendLogoutMutation } from './authApiSlice'
 import { useNavigate } from 'react-router-dom'
+import { useSendLogoutMutation } from './authApiSlice'
 
 const Logout = () => {
     const navigate = useNavigate()

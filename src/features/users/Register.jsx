@@ -1,6 +1,6 @@
 import axios from 'axios';
-import { useState, useEffect } from 'react';
 import queryString from 'query-string';
+import { useEffect, useState } from 'react';
 
 const Register = () => {
 
@@ -11,7 +11,6 @@ const Register = () => {
     const [username, setUsername] = useState('')
     const [validUsername, setValidUsername] = useState(false)
     const [errMsg, setErrMsg] = useState('')
-
     const USER_REGEX = /^(?=[A-Za-z0-9\s]{1,24}[A-Za-z0-9]?$)[A-Za-z0-9\s]{1,25}$/
     const EMAIL_REGEX = /^[A-Za-z0-9]{1,25}$/
     const PWD_REGEX = /^[a-zA-Z0-9!@#$%^&*()_+={}\[\]|\\:;"'<,>.?/]{4,26}$/
@@ -93,7 +92,6 @@ const Register = () => {
                                     : null
                     }
                     <p className={errMsg ? "errmsg" : "null"}>{errMsg}</p>
-
                 </span>
                 <button type='button' className="login-form-button" onClick={() => window.location.href = url}>Continue with Google</button>
                 <span className="login-form-divider"><div className="line-through-div"></div>or<div className="line-through-div"></div></span>

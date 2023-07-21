@@ -1,16 +1,15 @@
 
-import { useHandleCommentVoteMutation, useDeleteCommentMutation } from './postsApiSlice'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHeart } from '@fortawesome/free-regular-svg-icons'
 import { faHeart as faHeartSolid } from '@fortawesome/free-solid-svg-icons'
-import TimeAgo from './TimeAgo'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useEffect, useState } from 'react'
-import UserPopUp from '../users/UserPopUp'
-import { setPopupVisible } from '../../app/popup/popupSlice'
-import { useDispatch } from 'react-redux'
-import { selectUserByEmail } from '../users/usersApiSlice'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
+import { setPopupVisible } from '../../app/popup/popupSlice'
+import UserPopUp from '../users/UserPopUp'
+import { selectUserByEmail } from '../users/usersApiSlice'
+import TimeAgo from './TimeAgo'
+import { useDeleteCommentMutation, useHandleCommentVoteMutation } from './postsApiSlice'
 
 const Comment = ({ postId, comment, email }) => {
 

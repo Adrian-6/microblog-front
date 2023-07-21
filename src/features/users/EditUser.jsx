@@ -1,12 +1,11 @@
+import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
-import { useGetUserByEmailMutation } from './usersApiSlice'
-import EditUserForm from './EditUserForm'
-import { useEffect } from 'react'
-import { useState } from 'react'
 import Loading from '../../assets/Loading'
+import EditUserForm from './EditUserForm'
+import { useGetUserByEmailMutation } from './usersApiSlice'
 
 const EditUser = () => {
-    const [getUserByEmail, { isLoading }] = useGetUserByEmailMutation()
+    const [getUserByEmail] = useGetUserByEmailMutation()
 
     const { email } = useParams()
     const [user, setUser] = useState('')

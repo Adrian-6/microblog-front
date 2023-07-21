@@ -1,16 +1,14 @@
-import Follow from './Follow'
-import { useNavigate } from 'react-router-dom'
+import { formatDistanceToNow, parseISO } from 'date-fns'
 import { useSelector } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
+import Follow from './Follow'
 import { selectUserByEmail } from './usersApiSlice'
-import { parseISO, formatDistanceToNow } from 'date-fns'
 
 const UserPopUp = ({ email }) => {
 
     let regex = /android|iphone|kindle|ipad/i
     let isMobileDevice = regex.test(navigator.userAgent);
-
     const user = useSelector(state => selectUserByEmail(state, email))
-
     const navigate = useNavigate()
 
         const date = parseISO(user.dateCreated)
@@ -27,7 +25,6 @@ const UserPopUp = ({ email }) => {
                         onClick={() => navigate(`/users/${user.email}/`)}
                         alt="user profile picture"
                     />
-
                     <div className="name">
                         <span className="username profile-link"><a href={`/users/${user.email}/`}>{user.username}</a></span>
                         <span className="username-at"><a href={`/users/${user.email}/`}>@{user.email}</a></span>
@@ -47,7 +44,5 @@ const UserPopUp = ({ email }) => {
         )
         return content
     }
-
-
 
 export default UserPopUp

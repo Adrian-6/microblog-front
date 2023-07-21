@@ -1,30 +1,24 @@
-import { useSelector } from 'react-redux'
-import { selectPostById } from './postsApiSlice'
-import { useParams } from 'react-router-dom'
-import { useGetPostsQuery, useHandleRepostMutation } from './postsApiSlice'
-import NewCommentForm from './NewCommentForm'
-import Comment from './Comment'
-import { selectCurrentUser } from "../auth/authSlice"
-import { useHandlePostVoteMutation } from './postsApiSlice'
-import TimeAgo from './TimeAgo'
+import { faComment, faHeart } from '@fortawesome/free-regular-svg-icons'
+import { faHeart as faHeartSolid, faRetweet } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faComment } from '@fortawesome/free-regular-svg-icons'
-import { faRetweet } from '@fortawesome/free-solid-svg-icons'
-import UserPopUp from '../users/UserPopUp'
 import { useEffect, useState } from 'react'
-import { faHeart } from '@fortawesome/free-regular-svg-icons'
-import { faHeart as faHeartSolid } from '@fortawesome/free-solid-svg-icons'
-import EditPostForm from './EditPostForm'
-import { selectUserByEmail } from '../users/usersApiSlice'
+import { useSelector } from 'react-redux'
+import { useParams } from 'react-router-dom'
 import Loading from '../../assets/Loading'
+import { selectCurrentUser } from "../auth/authSlice"
+import UserPopUp from '../users/UserPopUp'
+import { selectUserByEmail } from '../users/usersApiSlice'
+import Comment from './Comment'
+import EditPostForm from './EditPostForm'
+import NewCommentForm from './NewCommentForm'
+import TimeAgo from './TimeAgo'
+import { selectPostById, useGetPostsQuery, useHandlePostVoteMutation, useHandleRepostMutation } from './postsApiSlice'
 
-const Post = ({ postId, comments }) => {
+const Post = ({ postId }) => {
     const [handlePostVote] = useHandlePostVoteMutation()
-
     const email = useSelector(selectCurrentUser)
     const [modal, setModal] = useState(false)
     const [trigger, setTrigger] = useState(false)
-
     const { id } = useParams()
 
     if (!postId) {
@@ -83,13 +77,11 @@ const Post = ({ postId, comments }) => {
             <div className="post single-post">
                 <span className="post-header">
                     <div className="post-header-picture">
-
                         <div className="profile-picture">
                             <a href={`/users/${post.author}/`}><img className="profile-picture" src={postAuthor.profilePictureURL} alt="user profile picture"/></a>
                         </div>
                         <div className='post-header-left'>
                             {<TimeAgo timestamp={post.createdAt} dateFormat="formatted" />}
-
                             <div className="post-header-author">
                                 <div
                                     onMouseEnter={() => setModal(true)}
@@ -117,7 +109,6 @@ const Post = ({ postId, comments }) => {
                                     <EditPostForm post={post} trigger={trigger} setTrigger={setTrigger} />
                                 )}
                             </div>
-
                             <span className="post-edit post-edit-button" onClick={() => setTrigger(prev => !prev)}>
                                 Edit Post
                             </span>
@@ -125,7 +116,6 @@ const Post = ({ postId, comments }) => {
                     )
                         : post.edited ? <span className="post-edit">Edited</span> : null}
                 </div>
-
                 <span className="post-footer single-post-footer">
                     <span onClick={() => { document.getElementById("comment").focus() }} className="single-post-comment-button"> <FontAwesomeIcon icon={faComment} /> {post.comments.length}</span>
                     <span className="post-footer-vote"><button onClick={handleVote} onMouseDown={e => e.preventDefault()} className={`${postLiked}`}> {postLikeIcon} {post.upvotes}
@@ -153,6 +143,5 @@ const Post = ({ postId, comments }) => {
     }
 
     return content
-
 }
 export default Post

@@ -1,10 +1,10 @@
-import Post from "./Post"
-import NewPostForm from "./NewPostForm"
-import useAllPosts from '../../hooks/useAllPosts'
-import { useParams } from "react-router-dom"
 import { useEffect, useState } from "react"
-import PagesList from "./PagesList"
+import { useParams } from "react-router-dom"
 import Loading from '../../assets/Loading'
+import useAllPosts from '../../hooks/useAllPosts'
+import NewPostForm from "./NewPostForm"
+import PagesList from "./PagesList"
+import Post from "./Post"
 
 const PostsList = () => {
     let { page } = useParams()
@@ -26,7 +26,6 @@ const PostsList = () => {
         if (!postsIsLoading) {
             setPages(numberOfPages)
         }
-
     }, [postsIsLoading, numberOfPages])
 
     let content

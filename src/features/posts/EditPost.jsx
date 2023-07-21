@@ -1,8 +1,8 @@
-import { useParams } from 'react-router-dom'
 import { useSelector } from 'react-redux'
-import { selectPostById } from './postsApiSlice'
-import EditPostForm from './EditPostForm'
+import { useParams } from 'react-router-dom'
 import Loading from '../../assets/Loading'
+import EditPostForm from './EditPostForm'
+import { selectPostById } from './postsApiSlice'
 
 const EditPost = () => {
 

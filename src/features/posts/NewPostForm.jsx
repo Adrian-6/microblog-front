@@ -1,24 +1,21 @@
-import { useState, useEffect } from "react"
-import { useAddNewPostMutation } from "./postsApiSlice"
+import { useEffect, useState } from "react"
+import { useDispatch, useSelector } from "react-redux"
 import { useNavigate } from "react-router-dom"
-import { selectCurrentUser } from "../auth/authSlice"
-import { useSelector } from "react-redux"
-import TextareaAutosize from 'react-textarea-autosize';
-import { useDispatch } from "react-redux"
+import TextareaAutosize from 'react-textarea-autosize'
 import { setPopupVisible } from "../../app/popup/popupSlice"
+import { selectCurrentUser } from "../auth/authSlice"
+import { useAddNewPostMutation } from "./postsApiSlice"
 
-const NewPostForm2 = () => {
+const NewPostForm = () => {
 
     const [addNewPost, {
         isLoading,
         isSuccess,
-        isError,
         error
     }] = useAddNewPostMutation()
 
     const navigate = useNavigate()
     const dispatch = useDispatch()
-
     const email = useSelector(selectCurrentUser)
 
     const [title, setTitle] = useState('')
@@ -36,7 +33,6 @@ const NewPostForm2 = () => {
 
     const onTitleChanged = e => setTitle(e.target.value)
     const onBodyChanged = e => setBody(e.target.value)
-
 
     const canSave = [title, body, body.length <= 8000, title.length <= 110].every(Boolean) && !isLoading
 
@@ -65,7 +61,6 @@ const NewPostForm2 = () => {
                         maxRows="2"
                         placeholder="Title"
                         className="post-form-title"
-
                     />
                 </span>
                 <div className="post-body">
@@ -99,8 +94,7 @@ const NewPostForm2 = () => {
             </p>
         </form>
     )
-
     return content
 }
-export default NewPostForm2
+export default NewPostForm
 

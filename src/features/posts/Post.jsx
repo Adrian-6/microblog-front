@@ -1,20 +1,14 @@
-import React from 'react'
-import { useSelector } from 'react-redux'
-import { selectPostById } from './postsApiSlice'
-import { useParams } from 'react-router-dom'
-import { useGetPostsQuery, useHandleRepostMutation } from './postsApiSlice'
-import { selectCurrentUser } from "../auth/authSlice"
-import { useHandlePostVoteMutation } from './postsApiSlice'
-import TimeAgo from './TimeAgo'
+import { faComment, faHeart } from '@fortawesome/free-regular-svg-icons'
+import { faHeart as faHeartSolid, faRetweet } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faComment } from '@fortawesome/free-regular-svg-icons'
-import { faRetweet } from '@fortawesome/free-solid-svg-icons'
+import React, { useEffect, useState } from 'react'
+import { useSelector } from 'react-redux'
+import { useNavigate, useParams } from 'react-router-dom'
+import { selectCurrentUser } from "../auth/authSlice"
 import UserPopUp from '../users/UserPopUp'
-import { useEffect, useState } from 'react'
-import { faHeart } from '@fortawesome/free-regular-svg-icons'
-import { faHeart as faHeartSolid } from '@fortawesome/free-solid-svg-icons'
-import { useNavigate } from "react-router-dom";
 import { selectUserByEmail } from '../users/usersApiSlice'
+import TimeAgo from './TimeAgo'
+import { selectPostById, useGetPostsQuery, useHandlePostVoteMutation, useHandleRepostMutation } from './postsApiSlice'
 
 const Post = React.forwardRef(({ postId }, ref) => {
 

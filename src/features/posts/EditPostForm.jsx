@@ -1,11 +1,10 @@
 import { useState } from "react"
-import { useUpdatePostMutation, useDeletePostMutation } from "./postsApiSlice"
+import { useDispatch, useSelector } from "react-redux"
 import { useNavigate } from "react-router-dom"
-import { useDispatch } from "react-redux"
+import TextareaAutosize from 'react-textarea-autosize'
 import { setPopupVisible } from "../../app/popup/popupSlice"
 import { selectCurrentUser } from "../auth/authSlice"
-import { useSelector } from "react-redux"
-import TextareaAutosize from 'react-textarea-autosize';
+import { useDeletePostMutation, useUpdatePostMutation } from "./postsApiSlice"
 
 const EditPostForm = ({ post, trigger, setTrigger }) => {
   const dispatch = useDispatch()
