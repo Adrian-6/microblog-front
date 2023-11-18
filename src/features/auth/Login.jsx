@@ -95,6 +95,7 @@ function Login() {
                     <button type='submit' name='submit' className='login-form-button'>Log In</button>
                 </form>
                 <span>Don't have an account yet? <a href='/register/'>Sign Up</a></span>
+                <span className='login-info'>Log in with username <span>test</span> and password <span>test</span> for preview</span>
             </section>
         )
 

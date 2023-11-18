@@ -12,7 +12,6 @@ body {
   height: 100%
 }
 
-
 :root {
   font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
   font-size: 16px;
@@ -45,13 +44,9 @@ a:hover {
   color: #535bf2;
 }
 
-
 body:has(.welcome-page) {
   padding-top: 0;
 }
-
-
-
 
 h1 {
   font-size: 3.2em;
@@ -109,11 +104,9 @@ button:focus-visible {
   color: var(--primary);
 }
 
-
 .page-list a:hover {
   text-decoration: underline;
   font-size: 1.1em;
-
 }
 
 .post {
@@ -193,7 +186,6 @@ button:focus-visible {
   margin: 10px;
 }
 
-
 .post-header-author {
   display: flex;
 }
@@ -265,6 +257,16 @@ button:focus-visible {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+}
+
+.login-info {
+  padding: 0.5rem;
+  border-bottom: 1px solid var(--white);
+}
+
+.login-info span {
+  font-weight: 700;
+  color: #646cff
 }
 
 .login-form {
@@ -387,13 +389,11 @@ button:focus-visible {
   max-width: min(600px, 100vw);
   margin: 10px;
   overflow-wrap: break-word;
-
 }
 
 .comment {
   border-top: 1px solid var(--lightgrey);
   padding: 15px 15px 5px 15px;
-
 }
 
 .comment-header {
@@ -456,12 +456,10 @@ button:focus-visible {
   flex-grow: 1;
   border-top: 1px solid var(--lightgrey);
   scroll-padding-top: 30px;
-
 }
 
 .comment-form {
   scroll-padding-top: 130px;
-
 }
 
 .comment-form,
@@ -635,14 +633,11 @@ button:focus-visible {
   max-height: 200px;
   width: 200px;
   height: 200px;
-
-
 }
 
 .user-profile-info .username {
   display: flex;
   font-size: min(1.8em, 10vw);
-
 }
 
 .users-list {
@@ -686,7 +681,6 @@ button:focus-visible {
 
 .users-search-results,
 .user-follows-list-empty {
-
   border-top: 2px solid var(--white);
   border-bottom-left-radius: 15px;
   border-bottom-right-radius: 15px;
@@ -709,7 +703,6 @@ button:focus-visible {
   position: inherit;
   font-size: 0.8em;
 }
-
 
 .follow-button {
   font-size: 1.2em;
@@ -926,7 +919,6 @@ button:focus-visible {
 
 .user-follows-list,
 .user-follows-list-empty {
-
   background-color: var(--black);
   border: 1px solid var(--lightgrey);
   border-radius: 15px;
@@ -1098,5 +1090,3 @@ button:focus-visible {
     padding: 0px;
   }
 }
-
-@media only screen and (min-width: 1200px) {}
